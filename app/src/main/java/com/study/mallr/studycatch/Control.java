@@ -1,5 +1,6 @@
 package com.study.mallr.studycatch;
 
+import android.content.BroadcastReceiver;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -10,4 +11,5 @@ public class Control extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_control);
     }
+
 }

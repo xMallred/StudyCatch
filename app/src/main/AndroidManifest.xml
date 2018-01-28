@@ -16,18 +16,31 @@
                 <category android:name="android.intent.category.LAUNCHER" />
 
                 <action android:name="android.intent.action.VIEW" />
-
             </intent-filter>
         </activity>
         <activity android:name=".Control">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:host="returnapp" android:pathPattern=".*" android:scheme="studycatch" />
+
+                <data
+                    android:host="returnapp"
+                    android:pathPattern=".*"
+                    android:scheme="studycatch" />
             </intent-filter>
-
         </activity>
-    </application>
+        <activity
+            android:name=".Questions"
+            android:label="@string/title_activity_questions"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
 
+        <receiver android:name=".Questions_Call">
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+
+    </application>
 </manifest>
