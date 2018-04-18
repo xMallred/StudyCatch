@@ -20,5 +20,4 @@ public class Questions_Call extends BroadcastReceiver {
             context.startActivity(intent1);
         }
     }
-
 }

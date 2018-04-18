@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">StudyCatch</string>
     <string name="title_activity_questions">Questions</string>
+    <string name="redirect_uri">studycatch://returnapp/status?=1</string>
+    <string name="client_id">xW5p9usgDg</string>
+    <string name="secret_key">tsX22zecFXS9u7CgNd9y3n </string>
 </resources>

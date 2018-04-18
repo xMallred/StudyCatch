@@ -1,13 +1,18 @@
 package com.study.mallr.studycatch;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Debug;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -18,58 +23,89 @@ import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URI;
+import java.net.URL;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Vector;
 
 import static android.widget.Toast.LENGTH_LONG;
 
-public class Questions extends AppCompatActivity {
+
+public class Questions extends AppCompatActivity  {
+
+    String response_bearer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions);
 
+        Intent i = getIntent();
+        Bundle b = i.getExtras();
+        //ArrayList ids_needed = (ArrayList) getIntent().getSerializableExtra("set_ids_to_use");
+
+        //Toast.makeText(getApplicationContext(), String.valueOf(ids_needed.get(0)), Toast.LENGTH_SHORT).show();
+
+
+
+
+        final Button answerbtn_1 = (Button)findViewById(R.id.anwser1_btn);
+        final Button answerbtn_2 = (Button)findViewById(R.id.anwser2_btn);
+        final Button answerbtn_3 = (Button)findViewById(R.id.anwser3_btn);
+        final Button answerbtn_4 = (Button)findViewById(R.id.anwser4_btn);
+        answerbtn_1.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+               // String path = URI.uri.toString();
+              //  Toast.makeText(getApplicationContext(), "RESPONSE_BEARER: " + /*response_bearer*/ , Toast.LENGTH_LONG).show();
+                answerbtn_2.setBackgroundColor(Color.rgb(00,255,00));
+                answerbtn_2.setText(answerbtn_2.getText()+" (✔)");
+                answerbtn_1.setBackgroundColor(Color.rgb(255,00,00));
+                answerbtn_1.setText(answerbtn_1.getText()+" (✘)");
+            }
+
+        });
+        answerbtn_2.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                // String path = URI.uri.toString();
+                //  Toast.makeText(getApplicationContext(), "RESPONSE_BEARER: " + /*response_bearer*/ , Toast.LENGTH_LONG).show();
+                answerbtn_2.setBackgroundColor(Color.rgb(00,255,00));
+                answerbtn_2.setText(answerbtn_2.getText()+" (✔)");
+                //answerbtn_1.setBackgroundColor(Color.rgb(99,00,00));
+            }
+
+        });
+        answerbtn_3.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                // String path = URI.uri.toString();
+                //  Toast.makeText(getApplicationContext(), "RESPONSE_BEARER: " + /*response_bearer*/ , Toast.LENGTH_LONG).show();
+                answerbtn_2.setBackgroundColor(Color.rgb(00,255,00));
+                answerbtn_2.setText(answerbtn_2.getText()+" (✔)");
+                answerbtn_3.setBackgroundColor(Color.rgb(255,00,00));
+                answerbtn_3.setText(answerbtn_3.getText()+" (✘)");
+            }
+
+        });
+        answerbtn_4.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                // String path = URI.uri.toString();
+                //  Toast.makeText(getApplicationContext(), "RESPONSE_BEARER: " + /*response_bearer*/ , Toast.LENGTH_LONG).show();
+                answerbtn_2.setBackgroundColor(Color.rgb(00,255,00));
+                answerbtn_2.setText(answerbtn_2.getText()+" (✔)");
+                answerbtn_4.setBackgroundColor(Color.rgb(255,00,00));
+                answerbtn_4.setText(answerbtn_4.getText()+" (✘)");
+            }
+
+        });
     }
 
-    String response_auth_code = "";
-    String redirect_uri = "";
-    String basic_authorization = "Basic "+"xW5p9usgDg"+"Rs008354!";
-    ByteBuffer byteBuffer = Charset.forName("UTF-8").encode(myString)
-    String post_url = "https://api.quizlet.com/oauth/token";
-    String response_bearer = "";
-
-    StringRequest sr = new StringRequest(Request.Method.POST,post_url, new Response.Listener<String>() {
-        @Override
-        public void onResponse(String response) {
-            response_bearer = response;
-        }
-    }, new Response.ErrorListener() {
-        @Override
-        public void onErrorResponse(VolleyError error) {
-            Toast.makeText(getApplicationContext(), "Error has occurred.", Toast.LENGTH_LONG).show();
-        }
-    }){
-        @Override
-        protected Map<String,String> getParams(){
-            Map<String,String> params = new HashMap<String, String>();
-            params.put("grant_type","authorization_code");
-            params.put("code",userAccount.getPassword());
-            params.put("comment", Uri.encode(comment));
-            params.put("comment_post_ID",String.valueOf(postId));
-            params.put("blogId",String.valueOf(blogId));
-
-            return params;
-        }
-
-        @Override
-        public Map<String, String> getHeaders() throws AuthFailureError {
-            Map<String,String> params = new HashMap<String, String>();
-            params.put("Content-Type","application/x-www-form-urlencoded");
-            return params;
-        }
-    };
-
 }
+
