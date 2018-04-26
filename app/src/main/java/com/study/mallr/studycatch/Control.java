@@ -2,8 +2,10 @@ package com.study.mallr.studycatch;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.StrictMode;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -158,19 +160,29 @@ public class Control extends AppCompatActivity {
 
     public void submit(){
         Button submit_btn = (Button)findViewById(R.id.setsToStudySubmitBtn);
+        final SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        final SharedPreferences.Editor editor = sharedPref.edit();
+        editor.clear();
+
         submit_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 for(int i = 0; i<switches.size(); i++){
                     if(switches.get(i).isChecked()){
                         set_ids_in_use.add(switches.get(i).getId());
+                        editor.putInt("setId_"+i, switches.get(i).getId());
+                        editor.commit();
+                        System.out.println("ADDING TO DATABASE: "+switches.get(i).getId()+" | SIZE: "+sharedPref.getAll().size());
                     }
                 }
-                Intent i = new Intent(Control.this, Questions.class);
-                i.putExtra("set_ids_to_use", set_ids_in_use);
-                //startActivity(i);
+                editor.putString("access_token", access_token);
+                editor.commit();
                 Toast.makeText(getApplicationContext(), "You may close this application.", Toast.LENGTH_SHORT).show();
                 Toast.makeText(getApplicationContext(), "Application will start next time you unlock your phone!", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
             }
         });
     }

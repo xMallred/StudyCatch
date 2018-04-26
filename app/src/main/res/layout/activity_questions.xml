@@ -6,21 +6,37 @@
     android:layout_height="match_parent"
     tools:context="com.study.mallr.studycatch.Questions">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/linearLayout"
-        android:paddingBottom="20dp">
+        android:layout_height="175dp"
+        android:id="@+id/linearLayout">
 
-        <TextView
-            android:layout_width="match_parent"
+        <ScrollView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Which of these is usually used to find the longest side of a triangle?"
-            android:textStyle="bold"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:textAlignment="center"/>
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true">
 
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                android:paddingTop="20dp">
+
+                <TextView
+                    android:id="@+id/question_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Which of the following is used to find the longest side in a right triangle?"
+                    android:textAlignment="center"
+                    android:textSize="30dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -29,49 +45,41 @@
         <Button
             android:id="@+id/anwser1_btn"
             android:layout_width="match_parent"
-            android:layout_height="95dp"
+            android:layout_height="105dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/linearLayout"
-            android:text="Binomial Theorem" />
-
+            android:text="Binomial Theorem"/>
         <Button
             android:id="@+id/anwser2_btn"
             android:layout_width="wrap_content"
-            android:layout_height="95dp"
+            android:layout_height="105dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/anwser1_btn"
-            android:layout_marginTop="10dp"
             android:layout_weight="1"
-            android:text="Pythagorean Theorem" />
-
+            android:text="Pythagorean Theorem"/>
         <Button
             android:id="@+id/anwser3_btn"
             android:layout_width="wrap_content"
-            android:layout_height="95dp"
+            android:layout_height="105dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/anwser2_btn"
-            android:layout_marginTop="10dp"
-            android:text="Quadratic Formula" />
-
+            android:text="Quadratic Formula"/>
         <Button
             android:id="@+id/anwser4_btn"
             android:layout_width="wrap_content"
-            android:layout_height="95dp"
+            android:layout_height="105dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/anwser3_btn"
-            android:layout_marginTop="10dp"
             android:text="Gauss-Jordan Elimination" />
-
     </RelativeLayout>
 
 </RelativeLayout>
